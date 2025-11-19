@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kashi</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body class="">
+    <nav class="bg-green-500 w-full px-4 py-3 flex justify-between z-50 items-center">
+        <div class="text-center">
+            <button class="inline-flex items-center justify-center text-black bg-brand box-border border border-transparent hover:bg-brand-strong font-medium rounded-base text-sm" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+                <svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </g>
+                </svg>
+            </button>
+        </div>
+
+        <input type="text" placeholder="Buscar" class="rounded-lg">
+        
+        <div id="drawer-navigation" class="bg-white fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft w-80 border-e border-default" tabindex="-1" aria-labelledby="drawer-navigation-label">
+        <div class="border-b border-default pb-4 flex items-center">
+            <a href="" class="flex items-center space-x-2 rtl:space-x-reverse">
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 w-6" alt="Kashi Logo" />
+                <span class="self-center text-lg font-semibold whitespace-nowrap text-heading">Kashi</span>
+            </a>
+            <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
+                <span class="sr-only">Cerrar menu</span>
+            </button>
+        </div>
+        <div class="py-5 overflow-y-auto">
+            <ul class="space-y-2 font-medium">
+                <li>
+                    <a href="dashboard.html" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <svg class="w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z"/><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z"/></svg>
+                    <span class="ms-3">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <button type="button" class="flex items-center w-full justify-between px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                        <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/></svg>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
+                    </button>
+                    <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                        <li>
+                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Products</a>
+                        </li>
+                        <li>
+                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Billing</a>
+                        </li>
+                        <li>
+                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Invoice</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Notificaciones</span>
+                    <span class="bg-neutral-secondary-medium border border-default-medium text-heading text-xs font-medium px-1.5 py-0.5 rounded-sm">Pro</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./notifications.html" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 13h3.439a.991.991 0 0 1 .908.6 3.978 3.978 0 0 0 7.306 0 .99.99 0 0 1 .908-.6H20M4 13v6a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-6M4 13l2-9h12l2 9M9 7h6m-7 3h8"/></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Notificaciones</span>
+                    <span class="inline-flex items-center justify-center w-4.5 h-4.5 ms-2 text-xs font-medium text-fg-danger-strong bg-danger-soft border border-danger-subtle rounded-full">2</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./favoritos.html" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M16 19h4a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-2m-2.236-4a3 3 0 1 0 0-4M3 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Favoritos</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./donaciones.html" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 0 1 3-3v0a3 3 0 0 1 3 3v4m3-2 .917 11.923A1 1 0 0 1 17.92 21H6.08a1 1 0 0 1-.997-1.077L6 8h12Z"/></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Donaciones</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/></svg>
+                    <span class="flex-1 ms-3 whitespace-nowrap">Cerrar sesion</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        </div>
+
+    </nav>
+    <main>
+    <div id="map" class="w-full h-[90vh] z-20 relative">
+        <div id="filter-controls" class="absolute bottom-5 right-5 z-[999]">
+            <button id="dropdownButton" data-dropdown-toggle="dropdownDropup" data-dropdown-placement="top" class="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-lg p-2.5 text-center inline-flex items-center w-10 h-10 shadow-lg" type="button" aria-expanded="false">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.75 4H1.5M10.75 4H18.5M14.75 16h3.75M7.75 16H1.5M4.75 7.5h10.5M11.75 12h-10.5"/>
+                </svg>
+                <span class="sr-only">Menú de Filtro de Capas</span>
+            </button>
+            <div id="dropdownDropup" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-60">
+                <ul class="py-2 text-sm text-gray-900" aria-labelledby="dropdownButton">
+                    </ul>
+            </div>
+        </div>
+        </div>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+<script>
+    const data = [
+        {
+            "nombre": "Catedral Nuestra Señora De Los Remedios",
+            "etiqueta": "historia y cultura",
+            "latitud": 11.551667,
+            "longitud": -72.909444,
+            "color": "#ff0000" // Rojo
+        },
+        {
+            "nombre": "Plaza Almirante Padilla (Centro Histórico/Monumento)",
+            "etiqueta": "historia y cultura/eventos y festivales",
+            "latitud": 11.5519,
+            "longitud": -72.9095,
+            "color": "#00ff00" // Verde
+        },
+        {
+            "nombre": "Muelle Turístico de Riohacha",
+            "etiqueta": "historia y cultura/artesanías",
+            "latitud": 11.5532,
+            "longitud": -72.9105,
+            "color": "#0000ff" // Azul
+        },
+        {
+            "nombre": "Santuario de Fauna y Flora Los Flamencos (Camarones)",
+            "etiqueta": "naturaleza y ecoturismo",
+            "latitud": 11.400000,
+            "longitud": -73.116667,
+            "color": "#ff8000" // Naranja
+        },
+        {
+            "nombre": "Playa de Mayapo (Ecoturismo costero)",
+            "etiqueta": "naturaleza y ecoturismo",
+            "latitud": 11.605,
+            "longitud": -72.868,
+            "color": "#800080" // Púrpura
+        },
+        {
+            "nombre": "Feria de Artesanías Wayúu (Paseo de la Playa)",
+            "etiqueta": "artesanías",
+            "latitud": 11.5528,
+            "longitud": -72.9100,
+            "color": "#00ffff" // Cyan
+        },
+        {
+            "nombre": "Restaurante Rancho del Sol (Comida Típica)",
+            "etiqueta": "gastronomia",
+            "latitud": 11.5492,
+            "longitud": -72.9116,
+            "color": "#ffff00" // Amarillo
+        },
+        {
+            "nombre": "Agencia de Viajes y Turismo Solera (Sede Principal)",
+            "etiqueta": "agencias turisticas",
+            "latitud": 11.5531,
+            "longitud": -72.9083,
+            "color": "#ffa500" // Naranja
+        },
+        {
+            "nombre": "Festival Francisco el Hombre (Sede/Eventos Principales)",
+            "etiqueta": "eventos y festivales",
+            "latitud": 11.5519,
+            "longitud": -72.9095,
+            "color": "#800080" // Púrpura
+        }
+    ];
+
+    var latitud = 11.5519; // Centrado en la Plaza Almirante Padilla
+    var longitud = -72.9095;
+    var zoomInicial = 15;
+
+    var mapa = L.map('map').setView([latitud, longitud], zoomInicial);
+
+    // 1. Función para mapear colores a iconos de Leaflet Color Markers
+    function getMarkerIcon(hexColor) {
+        let colorName;
+        switch (hexColor) {
+            case "#ff0000": // Rojo
+                colorName = "red";
+                break;
+            case "#00ff00": // Verde
+                colorName = "green";
+                break;
+            case "#0000ff": // Azul
+            case "#00ffff": // Cyan (cercano al azul)
+                colorName = "blue";
+                break;
+            case "#ff8000": // Naranja
+            case "#ffa500":
+                colorName = "orange";
+                break;
+            case "#800080": // Púrpura
+                colorName = "violet";
+                break;
+            case "#ffff00": // Amarillo
+                colorName = "yellow";
+                break;
+            default:
+                colorName = "blue"; // Color por defecto
+        }
+        return L.icon({
+            iconUrl: `https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-${colorName}.png`,
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            shadowSize: [41, 41]
+        });
+    }
+
+    // 2. Añadir la Capa de Tiles (Mapa base)
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        zoomControl: false 
+    }).addTo(mapa);
+
+    var categorias = {};
+    data.forEach(function(punto) {
+        if (!categorias[punto.etiqueta]) {
+            // Inicializar el LayerGroup para la categoría y guardar el color
+            categorias[punto.etiqueta] = L.layerGroup({
+                color: punto.color
+            }).addTo(mapa); // Añadir todas las capas al mapa por defecto
+        }
+        
+        // Crear el marcador con el icono de color correspondiente
+        L.marker([punto.latitud, punto.longitud], {
+            icon: getMarkerIcon(punto.color)
+        }).bindPopup(`<strong>${punto.nombre}</strong><br>Categoría: ${punto.etiqueta}`)
+            .addTo(categorias[punto.etiqueta]);
+    });
+
+    // 3. Crear el Control de Capas Personalizado (Flowbite Dropup)
+    const dropdownList = document.querySelector('#dropdownDropup ul');
+
+    // Función para alternar las capas del mapa
+    function toggleLayer(layerName, checkbox) {
+        const layer = categorias[layerName];
+        if (checkbox.checked) {
+            mapa.addLayer(layer);
+        } else {
+            mapa.removeLayer(layer);
+        }
+    }
+
+    // Rellenar el Dropup con las categorías
+    for (const [etiqueta, layerGroup] of Object.entries(categorias)) {
+        const listItem = document.createElement('li');
+        const color = layerGroup.options.color; // Obtener el color guardado
+        
+        // Generar un ID limpio
+        const idEtiqueta = etiqueta.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/\//g, '--');
+
+        listItem.innerHTML = `
+            <div class="flex items-center ps-4 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                <input id="${idEtiqueta}" type="checkbox" checked class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 rounded focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500 cursor-pointer">
+                <label for="${idEtiqueta}" class="w-full py-2 ms-2 text-sm font-medium text-black cursor-pointer flex items-center">
+                    ${etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1)}
+                </label>
+            </div>
+        `;
+        
+        // Adjuntar evento de escucha al checkbox
+        const checkbox = listItem.querySelector(`#${idEtiqueta}`);
+        checkbox.addEventListener('change', (e) => {
+            toggleLayer(etiqueta, e.target);
+        });
+
+        dropdownList.appendChild(listItem);
+    }
+    
+    // Controles de mapa adicionales (Escala y capa Satelital)
+    L.control.scale().addTo(mapa);
+    L.control.layers(null, {
+        'Satelital': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        })
+    }).addTo(mapa);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+[
+  {
+    "nombre": "Catedral Nuestra Señora De Los Remedios",
+    "etiqueta": "historia y cultura",
+    "latitud": 11.551667,
+    "longitud": -72.909444
+  },
+  {
+    "nombre": "Plaza Almirante Padilla (Centro Histórico/Monumento)",
+    "etiqueta": "historia y cultura/eventos y festivales",
+    "latitud": 11.5519,
+    "longitud": -72.9095
+  },
+  {
+    "nombre": "Muelle Turístico de Riohacha",
+    "etiqueta": "historia y cultura/artesanías",
+    "latitud": 11.5532,
+    "longitud": -72.9105
+  },
+  {
+    "nombre": "Santuario de Fauna y Flora Los Flamencos (Camarones)",
+    "etiqueta": "naturaleza y ecoturismo",
+    "latitud": 11.400000,
+    "longitud": -73.116667
+  },
+  {
+    "nombre": "Playa de Mayapo (Ecoturismo costero)",
+    "etiqueta": "naturaleza y ecoturismo",
+    "latitud": 11.605,
+    "longitud": -72.868
+  },
+  {
+    "nombre": "Feria de Artesanías Wayúu (Paseo de la Playa)",
+    "etiqueta": "artesanías",
+    "latitud": 11.5528,
+    "longitud": -72.9100
+  },
+  {
+    "nombre": "Restaurante Rancho del Sol (Comida Típica)",
+    "etiqueta": "gastronomia",
+    "latitud": 11.5492,
+    "longitud": -72.9116
+  },
+  {
+    "nombre": "Agencia de Viajes y Turismo Solera (Sede Principal)",
+    "etiqueta": "agencias turisticas",
+    "latitud": 11.5531,
+    "longitud": -72.9083
+  },
+  {
+    "nombre": "Festival Francisco el Hombre (Sede/Eventos principales)",
+    "etiqueta": "eventos y festivales",
+    "latitud": 11.5519,
+    "longitud": -72.9095
+  }
+]
