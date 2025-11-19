@@ -7,11 +7,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-    <link rel="shortcut icon" href="./assets/img/kashi.png" type="image/x-icon">
 </head>
 <body class="">
-    <nav class="bg-[#698c1c] p-2 w-full flex justify-between z-50 items-center">
-        <div class="flex justify-center items-center">
+    <nav class="bg-green-500 w-full px-4 py-3 flex justify-between z-50 items-center">
+        <div class="text-center">
             <button class="inline-flex items-center justify-center text-black bg-brand box-border border border-transparent hover:bg-brand-strong font-medium rounded-base text-sm" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
                 <svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -28,7 +27,7 @@
         <div id="drawer-navigation" class="bg-white fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft w-80 border-e border-default" tabindex="-1" aria-labelledby="drawer-navigation-label">
         <div class="border-b border-default pb-4 flex items-center">
             <a href="" class="flex items-center space-x-2 rtl:space-x-reverse">
-                <img src="./assets/img/kashi.png" class="h-6 w-6" alt="Kashi Logo" />
+                <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 w-6" alt="Kashi Logo" />
                 <span class="self-center text-lg font-semibold whitespace-nowrap text-heading">Kashi</span>
             </a>
             <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
@@ -100,105 +99,31 @@
 
     </nav>
     <main>
-        <section class="p-2">
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
+        <section class="p-2 grid grid-cols-3 gap-2">
+            <h1 class="col-span-3 text-center">Galeria de monumentos</h1>
+            <article class="rounded-lg shadow-lg p-2">
+                <img src="./assets/img/pushipu.jpg" alt="" class="w-32 h-32 rounded-lg">
+                <h4 class="text-center text-xs font-medium">Nombre del monumento</h4>
             </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
+            <article class="rounded-lg shadow-lg p-2">
+                <img src="./assets/img/pushipu.jpg" alt="" class="w-32 h-32 rounded-lg">
+                <h4 class="text-center text-xs font-medium">Nombre del monumento</h4>
             </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
+            <article class="rounded-lg shadow-lg p-2">
+                <img src="./assets/img/pushipu.jpg" alt="" class="w-32 h-32 rounded-lg">
+                <h4 class="text-center text-xs font-medium">Nombre del monumento</h4>
             </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
+            <article class="rounded-lg shadow-lg p-2">
+                <img src="./assets/img/pushipu.jpg" alt="" class="w-32 h-32 rounded-lg">
+                <h4 class="text-center text-xs font-medium">Nombre del monumento</h4>
             </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
+            <article class="rounded-lg shadow-lg p-2">
+                <img src="./assets/img/pushipu.jpg" alt="" class="w-32 h-32 rounded-lg">
+                <h4 class="text-center text-xs font-medium">Nombre del monumento</h4>
             </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
-            </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
-            </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
-            </article>
-            <article class="shadow-lg flex gap-4 p-2 rounded-lg">
-                <img src="" alt="" class="w-16 h-16 bg-blue-500 rounded-full shadow-lg">
-                <div>
-                    <h2 class="font-semibold">Kasha</h2>
-                    <p>Se han realizado remodelacione a este monumento recinetemente</p>
-                </div>
-                <div class="text-sm">
-                    <span>12/11/2025</span>
-                    <span>12:00</span>
-                </div>
+            <article class="rounded-lg shadow-lg p-2">
+                <img src="./assets/img/pushipu.jpg" alt="" class="w-32 h-32 rounded-lg">
+                <h4 class="text-center text-xs font-medium">Nombre del monumento</h4>
             </article>
         </section>
     </main>
