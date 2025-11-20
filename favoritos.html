@@ -9,26 +9,40 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
 <body class="">
-    <nav class="bg-green-500 w-full px-4 py-3 flex justify-between z-50 items-center">
+    <nav class="bg-[#96a65b] w-full px-4 py-3 flex h-[65px] gap-4 justify-between z-50 items-center">
         <div class="text-center">
-            <button class="inline-flex items-center justify-center text-black bg-brand box-border border border-transparent hover:bg-brand-strong font-medium rounded-base text-sm" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
+            <button class="inline-flex items-center justify-center bg-[#f2620f] rounded-full p-2 text-black bg-brand box-border border border-transparent hover:bg-brand-strong font-medium rounded-base text-sm" type="button" data-drawer-target="drawer-navigation" data-drawer-show="drawer-navigation" aria-controls="drawer-navigation">
                 <svg viewBox="0 0 24 24" fill="black" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">
-                        <path d="M4 6H20M4 12H20M4 18H20" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M4 6H20M4 12H20M4 18H20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </g>
                 </svg>
             </button>
         </div>
 
-        <input type="text" placeholder="Buscar" class="rounded-lg">
+        
+        <form class="flex items-center space-x-2 w-full">   
+            <label for="voice-search" class="sr-only">Buscar</label>
+            <div class="relative w-full">
+                <input type="text" id="voice-search" class="rounded-full block w-full p-2.5 bg-neutral-secondary-medium border border-[#698c1c] text-heading text-sm rounded-base shadow-xs placeholder:text-body" placeholder="Descubre la magia.." required />
+                <button type="button" class="absolute inset-y-0 end-0 flex items-center pe-3">
+                    <svg class="w-4 h-4 text-body hover:text-heading" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9v3a5.006 5.006 0 0 1-5 5h-4a5.006 5.006 0 0 1-5-5V9m7 9v3m-3 0h6M11 3h2a3 3 0 0 1 3 3v5a3 3 0 0 1-3 3h-2a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Z"/></svg>
+                </button>
+            </div>
+            <button type="submit" class="inline-flex items-center rounded-full text-white bg-[#f2620f] font-semibold box-border border border-transparent focus:ring-4 focus:ring-orange-300 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none">
+                <svg class="w-4 h-4 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/></svg>
+                Buscar
+            </button>
+        </form>
+
         
         <div id="drawer-navigation" class="bg-white fixed top-0 left-0 z-40 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-neutral-primary-soft w-80 border-e border-default" tabindex="-1" aria-labelledby="drawer-navigation-label">
         <div class="border-b border-default pb-4 flex items-center">
-            <a href="" class="flex items-center space-x-2 rtl:space-x-reverse">
-                <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 w-6" alt="Kashi Logo" />
-                <span class="self-center text-lg font-semibold whitespace-nowrap text-heading">Kashi</span>
+            <a href="dashboard.html" class="flex flex-col">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap text-heading text-[#968c1c]">Kashi</span>
+                <span class="self-center text-lg font-semibold whitespace-nowrap text-heading text-[#f2620f]">¡Descubre la magia!</span>
             </a>
             <button type="button" data-drawer-hide="drawer-navigation" aria-controls="drawer-navigation" class="text-body bg-transparent hover:text-heading hover:bg-neutral-tertiary rounded-base w-9 h-9 absolute top-2.5 end-2.5 flex items-center justify-center">
                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/></svg>
@@ -46,27 +60,20 @@
                 <li>
                     <button type="button" class="flex items-center w-full justify-between px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                         <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/></svg>
-                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
+                        <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">Descubre mas!</span>
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7"/></svg>
                     </button>
                     <ul id="dropdown-example" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Products</a>
+                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Agencias</a>
                         </li>
                         <li>
-                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Billing</a>
+                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Restaurantes</a>
                         </li>
                         <li>
-                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Invoice</a>
+                            <a href="#" class="pl-10 flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">Experiencias</a>
                         </li>
                     </ul>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
-                    <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v14M9 5v14M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/></svg>
-                    <span class="flex-1 ms-3 whitespace-nowrap">Notificaciones</span>
-                    <span class="bg-neutral-secondary-medium border border-default-medium text-heading text-xs font-medium px-1.5 py-0.5 rounded-sm">Pro</span>
-                    </a>
                 </li>
                 <li>
                     <a href="./notifications.html" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
@@ -88,7 +95,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
+                    <a href="index.html" class="flex items-center px-2 py-1.5 text-body rounded-base hover:bg-neutral-tertiary hover:text-fg-brand group">
                     <svg class="shrink-0 w-5 h-5 transition duration-75 group-hover:text-fg-brand" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/></svg>
                     <span class="flex-1 ms-3 whitespace-nowrap">Cerrar sesion</span>
                     </a>
@@ -98,7 +105,7 @@
         </div>
 
     </nav>
-    <main>
+    <main class="h-[calc(100vh-65px)]">
         <section class="p-2 grid grid-cols-3 gap-2">
             <h1 class="col-span-3 text-center">Galeria de monumentos</h1>
             <article class="rounded-lg shadow-lg p-2">
