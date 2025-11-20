@@ -108,7 +108,36 @@
     </nav>
     <main>
         <section class="w-full h-screen overflow-hidden" style="background-image: url(./assets/img/simulador.webp); background-size: cover; background-position: center;">
-            <a href="" class="w-10 h-10 animation-saltar top-22 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
+            <div id="dialogo" class="animation-aparecer flex flex-col bg-[#f2e8df] rounded-lg p-2 m-2 shadow-lg max-w-[60vw] max-h-[30vh] overflow-auto">
+                <div class="flex flex-col items-end">
+                    <div class="flex w-full">
+                        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" stroke-width="3" stroke="#698c1c" fill="none" class="flex-shrink-0 w-5 h-5 animation-ai mr-1">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <circle cx="34.52" cy="11.43" r="5.82"></circle>
+                                <circle cx="53.63" cy="31.6" r="5.82"></circle>
+                                <circle cx="34.52" cy="50.57" r="5.82"></circle>
+                                <circle cx="15.16" cy="42.03" r="5.82"></circle>
+                                <circle cx="15.16" cy="19.27" r="5.82"></circle>
+                                <circle cx="34.51" cy="29.27" r="4.7"></circle>
+                                <line x1="20.17" y1="16.3" x2="28.9" y2="12.93"></line>
+                                <line x1="38.6" y1="15.59" x2="49.48" y2="27.52"></line>
+                                <line x1="50.07" y1="36.2" x2="38.67" y2="46.49"></line>
+                                <line x1="18.36" y1="24.13" x2="30.91" y2="46.01"></line>
+                                <line x1="20.31" y1="44.74" x2="28.7" y2="48.63"></line>
+                                <line x1="17.34" y1="36.63" x2="31.37" y2="16.32"></line>
+                                <line x1="20.52" y1="21.55" x2="30.34" y2="27.1"></line>
+                                <line x1="39.22" y1="29.8" x2="47.81" y2="30.45"></line>
+                                <line x1="34.51" y1="33.98" x2="34.52" y2="44.74"></line>
+                            </g>
+                        </svg>
+                        <p id="texto" class="flex-grow text-sm"></p>
+                    </div>
+                    <button type="buttom" id="cerrar" class="px-2 rounded-lg text-xs bg-[#f2620f]">Cerrar</button>
+                </div>
+            </div>
+            <button type="button" id="significado" class="animation-aparecer w-10 h-10 animation-saltar top-22 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
                 <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -117,8 +146,8 @@
                         <path d="M10 13H7V16H10V13Z" fill="white"></path>
                     </g>
                 </svg>
-            </a>
-            <a href="" class="w-10 w-10 animation-saltar top-34 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
+            </button>
+            <button type="button" id="historia" class="animation-aparecer w-10 w-10 top-34 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -126,19 +155,20 @@
                         <path d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </g>
                 </svg>
-            </a>
-            <a href="" class="w-10 w-10 animation-saltar top-46 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </button>
+            <button type="button" id="cultura" class="animation-aparecer w-10 w-10 top-46 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
+                <svg version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#000000">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                     <g id="SVGRepo_iconCarrier">
-                        <path d="M17 3.33782C15.5291 2.48697 13.8214 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 10.5778 21.7031 9.22492 21.1679 8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="0.5 3.5"></path>
-                        <path d="M22 12C22 10.1786 21.513 8.47087 20.6622 7M12 2C13.8214 2 15.5291 2.48697 17 3.33782" stroke="white" stroke-width="1.5" stroke-linecap="round"></path>
-                        <path d="M12 9V13H16" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <style type="text/css">.st0{fill: white;}</style>
+                        <g>
+                            <path class="st0" d="M406.871,121.397c-32.096,0.007-58.091,26.002-58.098,58.098V244.5h-5.209V83.739 C343.556,37.482,306.082,0.007,259.825,0c-46.257,0.007-83.732,37.482-83.739,83.739v187.208c-0.247-0.085-0.495-0.156-0.714-0.22 c-1.111-0.304-1.996-0.488-2.958-0.686c-2.81-0.566-6.185-1.139-9.186-1.727v-31.013c-0.006-32.088-26.002-58.09-58.098-58.098 c-32.088,0.007-58.083,26.009-58.09,58.098v34.17c0,15.931,3.248,31.317,9.158,45.266c8.86,20.928,23.546,38.586,42.046,51.091 c18.04,12.23,39.952,19.448,63.158,19.823l0.325,0.071h14.36V512h167.478v-14.494V360.687h6.604h0.049l0.736-0.021v-0.014 c15.442-0.106,30.361-3.284,43.907-9.01c20.673-8.747,38.105-23.242,50.461-41.522c12.272-18.132,19.498-40.206,19.619-63.597 h0.006l0.014-0.318v-0.22v-0.007v-66.484C464.954,147.399,438.959,121.404,406.871,121.397z M435.972,245.886v0.1 c0.007,17.586-5.456,34.304-14.664,47.892c-9.265,13.702-22.28,24.516-37.743,31.069c-10.248,4.332-21.628,6.752-33.348,6.752 h-0.049h-35.592v151.312h-109.5V358.734h-41.544h-0.241h-0.07c-17.906,0-34.913-5.541-48.728-14.912 c-13.928-9.42-24.948-22.668-31.6-38.38c-4.416-10.425-6.865-21.99-6.865-33.971v-34.17c0.007-8.082,3.234-15.273,8.528-20.58 c5.308-5.294,12.491-8.521,20.573-8.528c8.083,0.007,15.273,3.234,20.581,8.528c5.293,5.308,8.521,12.498,8.528,20.58v34.269 c-0.049,5.746,1.918,11.706,4.856,16.002l0.056,0.077l0.014,0.028c1.678,2.413,3.185,3.503,4.345,4.324 c2.195,1.451,3.61,1.932,4.969,2.449c1.288,0.453,2.484,0.793,3.666,1.097c0.906,1.033,1.77,1.726,2.428,2.229 c2.456,1.677,3.504,1.818,4.31,2.123c1.416,0.404,1.862,0.418,2.293,0.496c0.665,0.078,0.906,0.085,1.133,0.106l0.983,0.022h41.784 V83.739c0.007-15.167,6.108-28.762,16.037-38.713c9.951-9.937,23.546-16.03,38.713-16.037c15.167,0.007,28.762,6.1,38.713,16.037 c9.929,9.95,16.03,23.546,16.037,38.713v189.749h35.592h0.07c2.725-0.007,5.535-0.41,8.16-1.238 c2.633-0.814,5.025-2.032,7.042-3.368l0.092-0.057l0.156-0.106l-0.135,0.092c4.544-3.1,7.905-7.183,10.064-12.215 c1.337-3.093,2.18-6.985,2.144-10.708v-66.392c0.007-8.09,3.234-15.273,8.528-20.581c5.308-5.294,12.492-8.521,20.581-8.528 c8.082,0.007,15.265,3.234,20.58,8.521c5.287,5.315,8.514,12.498,8.521,20.588V245.886z"></path>
+                        </g>
                     </g>
                 </svg>
-            </a>
-            <a href="" class="w-10 w-10 animation-saltar top-58 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
+            </button>
+            <button type="button" id="" class="animation-aparecer w-10 w-10 top-58 right-5 absolute rounded-full p-2 flex items-center justify-center bg-[#f2620f]">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -146,31 +176,109 @@
                         <path d="M10 12H14M12 10V14M19.9592 15H16.6C16.0399 15 15.7599 15 15.546 15.109C15.3578 15.2049 15.2049 15.3578 15.109 15.546C15 15.7599 15 16.0399 15 16.6V19.9592M20 14.1031V7.2C20 6.07989 20 5.51984 19.782 5.09202C19.5903 4.71569 19.2843 4.40973 18.908 4.21799C18.4802 4 17.9201 4 16.8 4H7.2C6.0799 4 5.51984 4 5.09202 4.21799C4.71569 4.40973 4.40973 4.71569 4.21799 5.09202C4 5.51984 4 6.0799 4 7.2V16.8C4 17.9201 4 18.4802 4.21799 18.908C4.40973 19.2843 4.71569 19.5903 5.09202 19.782C5.51984 20 6.0799 20 7.2 20H14.1031C14.5923 20 14.8369 20 15.067 19.9447C15.2711 19.8957 15.4662 19.8149 15.6451 19.7053C15.847 19.5816 16.0199 19.4086 16.3658 19.0627L19.0627 16.3658C19.4086 16.0199 19.5816 15.847 19.7053 15.6451C19.8149 15.4662 19.8957 15.2711 19.9447 15.067C20 14.8369 20 14.5923 20 14.1031Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                     </g>
                 </svg>
-            </a>
+            </button>
+
             <article class="bottom-5 absolute w-full flex justify-center items-center">
-                <div class="rounded-full p-1 border border-[7px] border-white">
+                <div class="rounded-full p-1 border border-white">
                     <div class="w-12 h-12 bg-white rounded-full"></div>
                 </div>
-                
             </article>
+            <div class="absolute bottom-5 right-5">
+                <div class="w-24 h-24 border border-white rounded-lg relative group overflow-hidden">
+                    <img src="./assets/img/pushipu.jpg" alt="" class="w-full h-full object-cover rounded-lg shadow-lg brightness-50 transform transition-all group-hover:scale-[1.2]">
+                    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center text-white font-bold">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 translate-y-2 origin-center transform transition duration-600 ease-in-out rotate-x-[60deg] rotate-z-0 group-hover:rotate-z-180">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <g id="Arrow / Arrows_Reload_01">
+                                    <path id="Vector" d="M10 16H5V21M14 8H19V3M4.58301 9.0034C5.14369 7.61566 6.08244 6.41304 7.29255 5.53223C8.50266 4.65141 9.93686 4.12752 11.4298 4.02051C12.9227 3.9135 14.4147 4.2274 15.7381 4.92661C17.0615 5.62582 18.1612 6.68254 18.9141 7.97612M19.4176 14.9971C18.8569 16.3848 17.9181 17.5874 16.708 18.4682C15.4979 19.3491 14.0652 19.8723 12.5723 19.9793C11.0794 20.0863 9.58606 19.7725 8.2627 19.0732C6.93933 18.374 5.83882 17.3175 5.08594 16.0239" stroke="#f2490c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </g>
+                            </g>
+                        </svg>
+                        <span class="absolute text-2xl text-[#f2620f] [text-shadow:-1px_-1px_0_#fff,1px_-1px_0_#fff,-1px_1px_0_#fff,1px_1px_0_#fff]">RA</span>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 <script>
-
-    function escribir(id, texto, velocidad = 100) {
-    const elemento = document.getElementById(id);
-    let i = 0;
-
-    elemento.textContent = ''; 
-    
-    (function escribirLoop() {
-        if (i < texto.length) {
-        elemento.textContent += texto.charAt(i++);
-        setTimeout(escribirLoop, velocidad);
+    let escrituraActualTimeout; 
+    function escribir(id, texto, velocidad = 40) {
+        // 1. CANCELAR LA ESCRITURA ANTERIOR
+        // Si hay un timeout anterior (escritura en curso), lo cancelamos.
+        if (escrituraActualTimeout) {
+            clearTimeout(escrituraActualTimeout);
         }
-    })();
+        
+        const elemento = document.getElementById(id);
+        let i = 0;
+
+        // Aseguramos que el elemento esté vacío al inicio de la nueva escritura
+        elemento.textContent = ''; 
+        
+        // Función de bucle nombrada
+        function escribirLoop() {
+            if (i < texto.length) {
+                elemento.textContent += texto.charAt(i++);
+                
+                // Lógica de transición de opacidad (aunque puede ralentizar el proceso)
+                elemento.style.opacity = 0;
+                elemento.style.transition = 'opacity 0.3s ease-in-out';
+                
+                setTimeout(function() {
+                    elemento.style.opacity = 1;
+                }, 10);
+                
+                // 2. GUARDAR EL IDENTIFICADOR DEL TIMEOUT
+                // Asignamos el timeout a la variable global.
+                escrituraActualTimeout = setTimeout(escribirLoop, velocidad);
+            } else {
+                // 3. LIMPIAR AL TERMINAR
+                // Una vez terminada la escritura, limpiamos la variable.
+                escrituraActualTimeout = null;
+            }
+        }
+
+        escribirLoop(); // Iniciamos el bucle
     }
+    // **********************************************
+    // **********************************************
+
+
+    // **TU CÓDIGO ORIGINAL CON LA CORRECCIÓN APLICADA**
+    escribir("texto", "Hola, ¿Quieres descubir la magia de este lugar?");
+
+    document.getElementById("cerrar").addEventListener("click", function() {
+        // Es buena práctica cancelar la escritura si se cierra el diálogo
+        if (escrituraActualTimeout) {
+            clearTimeout(escrituraActualTimeout);
+            escrituraActualTimeout = null;
+        }
+        document.getElementById("dialogo").style.opacity = 0;
+    }); 
+
+    document.getElementById("significado").addEventListener("click", function() {
+        // La función 'escribir' ahora se encarga de limpiar el timeout anterior
+        document.getElementById("texto").textContent = "";
+        document.getElementById("dialogo").style.opacity = 1;
+        escribir("texto", "Es el Palabrero Wayuu, o Pütchipü'üi, el mediador y diplomático más importante de esta etnia indígena. Él es la ley. Cuando hay un conflicto, como una disputa por tierras o un problema entre familias, él interviene con la pura fuerza de sus palabras para evitar la violencia y negociar una compensación. Es un símbolo de paz. La UNESCO reconoció este sistema como Patrimonio de la Humanidad.");
+    });
+
+    document.getElementById("historia").addEventListener("click", function() {
+        // La función 'escribir' ahora se encarga de limpiar el timeout anterior
+        document.getElementById("texto").textContent = "";
+        document.getElementById("dialogo").style.opacity = 1;
+        escribir("texto", "Fue creado por el artista guajiro Javier Julio Mendoza y está ubicado justo aquí, en el Camellón de Riohacha (la Calle Primera). Aunque parece de bronce, se creó con un acabado que lo simula. La figura, con su sombrero tradicional, su bastón (símbolo de su viaje y autoridad) y su gesto de diálogo, captura perfectamente su papel como mensajero de justicia y concordia. Es un tributo a la sabiduría milenaria de La Guajira.");
+    });
+
+    document.getElementById("cultura").addEventListener("click", function() {
+        // La función 'escribir' ahora se encarga de limpiar el timeout anterior
+        document.getElementById("texto").textContent = "";
+        document.getElementById("dialogo").style.opacity = 1;
+        escribir("texto", "El Bastón es el 'Micrófono' Wayuu: El bastón que sostiene el Palabrero no es solo un apoyo; es un símbolo de su autoridad y su derecho a hablar. Cuando un Palabrero llega a un encuentro para mediar, la primera cosa que hace es golpear suavemente el suelo con su bastón. Este sonido es el equivalente a decir: 'Silencio, la palabra de la ley ha llegado'.");
+    });
 </script>
 </body>
 </html>

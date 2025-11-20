@@ -13,3 +13,43 @@
         transform: translateY(0);
     }
 }
+
+.animation-ai{
+    animation: ai infinite ease-in-out 5s;
+}
+
+@keyframes ai{
+    0%{
+        transform: rotate(0) scale(1.2);
+    }
+    50%{
+        transform: rotate(180deg) scale(0.8);
+    }
+    100%{
+        transform: rotate(0) scale(1.2);
+    }
+}
+
+
+.animation-rotar {
+    transform-origin: center center;
+    transform: rotate3d(1, 0, 0, 60deg) rotateZ(0deg);
+    transition: transform 0.6s ease-in-out;
+}
+
+.animation-aparecer{
+    animation: aparecer 1s ease-in-out;
+}
+
+@keyframes aparecer{
+    0%{
+        transform: translateX(-10px);
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
