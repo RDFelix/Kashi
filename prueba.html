@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detección de Objetos en Vivo con Webcam (TensorFlow.js)</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+        #videoContainer {
+            position: relative; /* Para posicionar el canvas sobre el video */
+            width: 80%;
+            max-width: 640px;
+            margin-bottom: 20px;
+            border: 3px solid #007bff;
+            border-radius: 8px;
+            overflow: hidden; /* Asegura que el contenido no se salga del borde */
+        }
+        #videoElement {
+            display: block; /* Elimina espacio extra debajo del video */
+            width: 100%;
+            height: auto;
+            transform: scaleX(-1); /* Refleja el video para que se vea como un espejo */
+        }
+        #canvasElement {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: scaleX(-1); /* Refleja el canvas para que coincida con el video */
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 17px;
+            cursor: pointer;
+            margin: 8px;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button#startButton {
+            background-color: #28a745;
+            color: white;
+        }
+        button#startButton:hover:not(:disabled) {
+            background-color: #218838;
+        }
+        button#stopButton {
+            background-color: #dc3545;
+            color: white;
+        }
+        button#stopButton:hover:not(:disabled) {
+            background-color: #c82333;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+</head>
+<body>
+
+    <h1>Detección de Objetos en Vivo</h1>
+    <p id="status">Cargando modelo de IA...</p>
+
+    <div id="videoContainer">
+        <video id="videoElement" autoplay playsinline muted></video>
+        <canvas id="canvasElement"></canvas> </div>
+
+    <div>
+        <button id="startButton" disabled>Iniciar Detección</button>
+        <button id="stopButton" disabled>Detener Detección</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('videoElement');
+        const canvas = document.getElementById('canvasElement');
+        const statusDisplay = document.getElementById('status');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let model = null; // Variable para almacenar el modelo COCO-SSD
+        let currentStream = null; // Para la transmisión de la cámara
+        let animationFrameId = null; // Para controlar el bucle de requestAnimationFrame
+
+        // Opciones de configuración para la cámara
+        const constraints = {
+            video: {
+                width: { ideal: 640 }, // Preferimos 640px de ancho
+                height: { ideal: 480 },// Preferimos 480px de alto
+                facingMode: "user" // Usa la cámara frontal (si está disponible)
+            },
+            audio: false
+        };
+
+        // Función para cargar el modelo de IA
+        async function loadCocoSsdModel() {
+            try {
+                statusDisplay.textContent = "Cargando modelo de IA... (esto puede tardar unos segundos)";
+                model = await cocoSsd.load();
+                statusDisplay.textContent = "Modelo de IA cargado. ¡Listo para detectar!";
+                startButton.disabled = false; // Habilita el botón de inicio una vez que el modelo está listo
+            } catch (error) {
+                console.error("Error al cargar el modelo COCO-SSD:", error);
+                statusDisplay.textContent = "Error al cargar el modelo de IA. Intenta de nuevo más tarde.";
+            }
+        }
+
+        // Función para iniciar la cámara y la detección
+        async function startDetection() {
+            if (!model) {
+                alert("El modelo de IA aún no ha terminado de cargar.");
+                return;
+            }
+
+            try {
+                // Si ya hay una transmisión, la detenemos primero
+                stopCameraAndDetection(); 
+
+                statusDisplay.textContent = "Iniciando cámara...";
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                currentStream = stream;
+                video.srcObject = stream;
+
+                // Espera a que el video se cargue y esté listo para reproducirse
+                await new Promise((resolve) => {
+                    video.onloadedmetadata = () => {
+                        // Establece el tamaño del canvas para que coincida con el video
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        resolve();
+                    };
+                });
+                
+                video.play(); // Asegura que el video está reproduciéndose
+                statusDisplay.textContent = "Cámara iniciada. Detectando objetos...";
+                startButton.disabled = true;
+                stopButton.disabled = false;
+                
+                // Inicia el bucle de detección
+                detectFrame();
+
+            } catch (err) {
+                console.error("Error al acceder a la cámara o iniciar detección:", err);
+                statusDisplay.textContent = "Error: No se pudo acceder a la cámara o iniciar detección. Asegúrate de dar permisos.";
+                startButton.disabled = false; // Habilita el botón por si hay que reintentar
+                stopButton.disabled = true;
+            }
+        }
+
+        // Función principal de detección de objetos
+        async function detectFrame() {
+            // Asegúrate de que el modelo y el video estén listos
+            if (model && video.readyState === 4) { // readyState 4 significa que el video está listo
+                // Realiza la detección de objetos
+                const predictions = await model.detect(video);
+
+                // Dibuja los resultados en el canvas
+                drawPredictions(predictions);
+            }
+            // Vuelve a llamar a la función en el siguiente cuadro de animación
+            animationFrameId = requestAnimationFrame(detectFrame);
+        }
+
+        // Función para dibujar los recuadros y etiquetas en el canvas
+        function drawPredictions(predictions) {
+            const context = canvas.getContext('2d');
+            
+            // Limpia el canvas en cada fotograma
+            context.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Estilos para el dibujo
+            context.font = '16px Arial';
+            context.textBaseline = 'top';
+            context.lineWidth = 2;
+
+            predictions.forEach(prediction => {
+                const [x, y, width, height] = prediction.bbox;
+                const score = Math.round(prediction.score * 100);
+
+                // Dibuja el recuadro
+                context.strokeStyle = prediction.score > 0.7 ? '#00FF00' : '#FFFF00'; // Verde si alta confianza, amarillo si media
+                context.strokeRect(x, y, width, height);
+
+                // Dibuja el fondo para el texto
+                context.fillStyle = context.strokeStyle;
+                const text = `${prediction.class} (${score}%)`;
+                const textWidth = context.measureText(text).width;
+                context.fillRect(x, y, textWidth + 10, 20); // Fondo para el texto
+
+                // Dibuja el texto
+                context.fillStyle = '#000000'; // Color del texto
+                context.fillText(text, x + 5, y + 2);
+            });
+        }
+
+        // Función para detener la cámara y la detección
+        function stopCameraAndDetection() {
+            // Detiene el bucle de detección si está activo
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+
+            // Detiene la transmisión de la cámara
+            if (currentStream) {
+                currentStream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+                currentStream = null;
+            }
+            
+            // Limpia el canvas
+            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+
+            // Actualiza el estado y los botones
+            statusDisplay.textContent = "Detección detenida. Modelo cargado.";
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        }
+
+        // 5. Event Listeners para los botones
+        startButton.addEventListener('click', startDetection);
+        stopButton.addEventListener('click', stopCameraAndDetection);
+
+        // Inicia la carga del modelo cuando la página se carga
+        window.onload = loadCocoSsdModel;
+    </script>
+
+</body>
+</html>
